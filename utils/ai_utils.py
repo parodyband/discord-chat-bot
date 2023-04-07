@@ -20,7 +20,7 @@ def generate_response(p, last_username):
         presence_penalty=0.5,
         stop=[f"{last_username}:", "GentryBot:", "Friend:"],
     )
-    print(messages[-1])
+    #print(messages[-1])
     messages.append(response.choices[0].text)
     return response.choices[0].text
 

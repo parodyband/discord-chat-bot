@@ -1,14 +1,16 @@
 import re
 
+
 async def mention_to_username(mention_str, bot):
     user_id_match = re.search(r'<@(\d+)>', mention_str)
-    
+
     if user_id_match:
         user_id = int(user_id_match.group(1))
         user = await bot.fetch_user(user_id)
         return "@" + user.display_name
     else:
         return None
+
 
 async def replace_mentions_with_usernames(message, bot):
     mention_matches = re.finditer(r'<@!?(\d+)>', message)
@@ -28,6 +30,7 @@ async def replace_mentions_with_usernames(message, bot):
 
     return new_message
 
+
 async def read_last_n_responses(num, message, bot):
     previous_messages = await get_history_messages(message, num)
     previous_messages_str = "\n".join(previous_messages)
@@ -38,14 +41,15 @@ async def read_last_n_responses(num, message, bot):
     print(message.author.name)
     if "GentryBot" in message.author.name:
         final_str = "NoUsername:"
-    
+
     print(final_str)
     return final_str
 
+
 async def get_history_messages(message, num):
-    previous_messages = [] 
-    async for msg in message.channel.history(limit=num, before=message): 
+    previous_messages = []
+    async for msg in message.channel.history(limit=num, before=message):
         previous_messages.append(f"{msg.author.name}: {msg.content}")
 
-    previous_messages.reverse() 
+    previous_messages.reverse()
     return previous_messages

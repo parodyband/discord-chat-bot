@@ -1,6 +1,7 @@
 from discord.ext import commands
 from utils import ai_utils
 
+
 class Commands(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
@@ -19,6 +20,7 @@ class Commands(commands.Cog):
     async def print_memory(self, ctx):
         response = ai_utils.messages
         await ctx.send(f"{response}")
+
 
 def setup(bot):
     bot.add_cog(Commands(bot))

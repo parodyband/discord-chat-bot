@@ -13,6 +13,7 @@ bot = commands.Bot(command_prefix="$", intents=intents)
 bot.load_extension("cogs.commands")
 bot.load_extension("cogs.events")
 
+
 @bot.event
 async def on_message(message):
     if message.author == bot.user:
@@ -49,10 +50,11 @@ async def on_message(message):
     if message.author.name == "Zee" and message.author.discriminator == "5246":
         # Get the custom emoji from the guild
         emoji = discord.utils.get(message.guild.emojis, name="handpussykaijitsu")
-        #if emoji:
-            #await message.add_reaction(emoji)
+        # if emoji:
+        # await message.add_reaction(emoji)
 
     # Process other commands
     await bot.process_commands(message)
+
 
 bot.run(discord_token)

@@ -1,7 +1,5 @@
-import discord
 from discord.ext import commands
-from utils import ai_utils, discord_utils
-from personality import initial_prompt, classifier_system
+from utils import ai_utils
 
 class Commands(commands.Cog):
     def __init__(self, bot):

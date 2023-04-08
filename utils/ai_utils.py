@@ -1,6 +1,6 @@
 import openai
 from config import openai_token
-from personality import initial_prompt, classifier_system
+from prompt_cache import initial_prompt, classifier_system
 
 openai.api_key = openai_token
 

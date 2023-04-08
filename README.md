@@ -21,7 +21,7 @@ BOTNAME="Your Bot Name"
 ```
 
 Replace `your_discord_bot_token` with your bot's token, and `your_openai_api_key` with your OpenAI API key.
-BOTNAME should be the same name as your bot's name in discord (not your nickname).
+`BOTNAME` should be the same name as your bot's name in discord (not your nickname).
 
 5. Run the bot: `python bot.py`
 

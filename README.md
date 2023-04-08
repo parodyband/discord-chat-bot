@@ -19,6 +19,7 @@ DISCORD_TOKEN=your_discord_bot_token
 OPENAI_TOKEN=your_openai_api_key
 BOTNAME="Your Bot Name"
 ```
+
 Replace `your_discord_bot_token` with your bot's token, and `your_openai_api_key` with your OpenAI API key.
 BOTNAME should be the same name as your bot's name in discord (not your nickname).
 

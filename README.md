@@ -2,6 +2,8 @@
 
 Discord-GPT-Chat-Bot is a Discord chatbot built using Discord.py and OpenAI GPT-X. The bot is capable of participating in text conversations, responding to specific commands, and has a memory feature to remember past interactions.
 
+![](https://i.imgur.com/MaZhecz.gif)
+
 ## Features
 - Conversational AI using OpenAI GPT-X
 - Slash command support

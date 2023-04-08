@@ -11,14 +11,6 @@ class Commands(commands.Cog):
     async def on_ready(self):
         print(f"Commands Cog is loaded")
 
-    @commands.slash_command(name="ping")
-    async def ping_legacy(self, ctx):
-        if ctx.author.guild_permissions.administrator:
-            latency = round(self.bot.latency * 1000)
-            await ctx.respond(f"pong! {latency}")
-        else:    
-            await ctx.respond("You do not have permission to ping the bot.")
-
     @commands.slash_command(name="clear_memory")
     async def clear_memory_legacy(self, ctx):
         if ctx.author.guild_permissions.administrator:

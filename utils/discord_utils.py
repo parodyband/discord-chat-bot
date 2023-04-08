@@ -32,7 +32,7 @@ async def replace_mentions_with_usernames(message, bot):
 
 
 async def read_last_n_responses(num, message, bot):
-    previous_messages = await get_history_messages(message, num)
+    previous_messages = await get_history_messages(message, num, bot)
     previous_messages_str = "\n".join(previous_messages)
 
     final_str = f"{previous_messages_str}\n{message.author.name}: {message.content}"
@@ -44,10 +44,12 @@ async def read_last_n_responses(num, message, bot):
     return final_str
 
 
-async def get_history_messages(message, num):
+async def get_history_messages(message, num, bot):
     previous_messages = []
     async for msg in message.channel.history(limit=num, before=message):
-        previous_messages.append(f"{msg.author.name}: {msg.content}")
+        final_str = await replace_mentions_with_usernames(msg.content, bot)
+        previous_messages.append(f"{msg.author.name}: {final_str}")
+        
 
     previous_messages.reverse()
     return previous_messages

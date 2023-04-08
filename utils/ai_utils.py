@@ -39,6 +39,18 @@ def should_respond(message_string):
         return (True, decision_text)
     else:
         return (False, decision_text)
+    
+def get_general_chat_completion(system_prompt, user_prompt, temp):
+    completion = openai.ChatCompletion.create(
+        model="gpt-3.5-turbo",
+        temperature=temp,
+        messages=[
+            {"role": "system", "content": f"{system_prompt}"},
+            {"role": "user", "content": f'{user_prompt}'}
+        ]
+    )
+
+    return completion['choices'][0]['message']['content']
 
 
 def clear_memory():

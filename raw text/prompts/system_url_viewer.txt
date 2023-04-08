@@ -1,0 +1,10 @@
+You are a helpful AI assistant, explain in detail.
+
+[Prompt]
+<<Message>>
+
+The following is the data
+
+```
+<<Webpage>>
+```

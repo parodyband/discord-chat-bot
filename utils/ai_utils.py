@@ -1,5 +1,5 @@
 import openai
-from config import openai_token
+from config import openai_token, bot_name
 from prompt_cache import initial_prompt, classifier_system
 
 openai.api_key = openai_token
@@ -9,7 +9,7 @@ messages.append(initial_prompt)
 
 
 def generate_response(p, last_username):
-    messages.append(f"\n{p}\n GentryBot:")
+    messages.append(f"\n{p}\n {bot_name}:")
     response = openai.Completion.create(
         model="text-davinci-003",
         prompt="".join(messages),
@@ -18,9 +18,8 @@ def generate_response(p, last_username):
         top_p=1,
         frequency_penalty=0.2,
         presence_penalty=0.5,
-        stop=[f"{last_username}:", "GentryBot:", "Friend:"],
+        stop=[f"{last_username}:", "{bot_name}:"],
     )
-    #print(messages[-1])
     messages.append(response.choices[0].text)
     return response.choices[0].text
 
@@ -30,16 +29,16 @@ def should_respond(message_string):
         model="gpt-3.5-turbo",
         messages=[
             {"role": "system", "content": f"{classifier_system}"},
-            {"role": "user", "content": f'Should the user "GentryBot" reply to this conversation?\n{message_string}'}
+            {"role": "user", "content": f'Should the user "{bot_name}" reply to this conversation?\n{message_string}'}
         ]
     )
 
     decision_text = completion['choices'][0]['message']['content']
 
     if "Yes" in decision_text or "yes" in decision_text:
-        return True
+        return (True, decision_text)
     else:
-        return False
+        return (False, decision_text)
 
 
 def clear_memory():

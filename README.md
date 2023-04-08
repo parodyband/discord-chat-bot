@@ -12,11 +12,11 @@ Discord-GPT-Chat-Bot is a Discord chatbot built using Discord.py and OpenAI GPT-
 1. Make sure you have Python 3.8 or later installed on your system.
 2. Clone the repository: `git clone https://github.com/parodyband/discord-gpt-chat-bot.git`
 3. `cd discord-gpt-chat-bot`
-4. Install the required packages: `pip install -r requirements.txt`
 5. Create a `.env` file in the root directory of the project with the following contents:
 ```
 DISCORD_TOKEN=your_discord_bot_token
 OPENAI_TOKEN=your_openai_api_key
+BOTNAME="Your Bot Name"
 ```
 Replace `your_discord_bot_token` with your bot's token, and `your_openai_api_key` with your OpenAI API key.
 6. Run the bot: `python bot.py`

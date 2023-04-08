@@ -38,11 +38,9 @@ async def read_last_n_responses(num, message, bot):
     final_str = f"{previous_messages_str}\n{message.author.name}: {message.content}"
     final_str = await replace_mentions_with_usernames(final_str, bot)
 
-    print(message.author.name)
     if "GentryBot" in message.author.name:
         final_str = "NoUsername:"
 
-    print(final_str)
     return final_str
 
 

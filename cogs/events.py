@@ -7,7 +7,7 @@ class Events(commands.Cog):
 
     @commands.Cog.listener()
     async def on_ready(self):
-        print(f'We have logged in as {self.bot.user}')
+        print(f'Discord GPT Bot Logged-in as {self.bot.user}')
 
 
 def setup(bot):

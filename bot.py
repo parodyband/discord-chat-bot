@@ -16,12 +16,27 @@ bot.load_extension("cogs.events")
 
 @bot.event
 async def on_message(message):
+
+    incoming_message = await discord_utils.replace_mentions_with_usernames(message.content,bot)
+
+    print(f"{message.author.name}: {incoming_message}")
+
     if message.author == bot.user:
         return
+    
+    # Check for Instagram links
+    if "instagram.com" in message.content:
+        emoji = discord.utils.get(message.guild.emojis, name="handpussykaijitsu");
+        await message.channel.send(f"Get that shit out of here, aint no one clickin that. {emoji}")
+        return
 
-    check_msgs = await discord_utils.read_last_n_responses(5, message, bot)
-    print(ai_utils.should_respond(check_msgs))
-    if ai_utils.should_respond(check_msgs):
+    message_context = 5
+    check_msgs = await discord_utils.read_last_n_responses(message_context, message, bot)
+    ai__should_respond, reasoning = ai_utils.should_respond(check_msgs)
+
+    print(f"Thinking: Will I respond? [{ai__should_respond}] | Message Context [{message_context}] | Reasoning: {reasoning}")
+
+    if ai__should_respond:
         ai_utils.clear_memory()
         ai_utils.messages.append(check_msgs)
         await message.channel.send(ai_utils.generate_response(ai_utils.messages, message.author.name))
